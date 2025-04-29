@@ -19,3 +19,4 @@ jobs:
           git fetch --prune
           git branch --merged main | grep -v "main" | xargs git branch -d
 
+a

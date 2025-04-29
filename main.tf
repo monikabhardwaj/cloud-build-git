@@ -56,3 +56,26 @@ resource "google_cloudbuild_trigger" "cloud_build_trigger" {
 
   depends_on = [google_sourcerepo_repository.repo]
 }
+
+# ---------------------------------------------------------------------------------------------------------------------
+# GOOGLE CLOUD STORAGE BUCKET
+# ---------------------------------------------------------------------------------------------------------------------
+
+resource "google_storage_bucket" "gcp_bucket" {
+  location      = "australia-southeast2"
+  name          = "mybucket"
+  storage_class = "STANDARD"
+
+  # Optional: Set lifecycle rules
+  lifecycle_rule {
+    action {
+      type = "Delete"
+    }
+  condition {
+    age = 365 # Delete objects older than 365 days
+  }
+  }
+
+}
+
+
