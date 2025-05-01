@@ -71,6 +71,10 @@ resource "google_storage_bucket" "gcp_bucket" {
     enabled = true
   }
 
+  uniform_bucket_level_access {
+    enabled = true
+  }
+
   # Optional: Set lifecycle rules
   lifecycle_rule {
     action {
