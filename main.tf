@@ -5,9 +5,13 @@
 
 
 locals {
-  services = [
+  service = [
     "sourcerepo.googleapis.com",
     "cloudbuild.googleapis.com",
+    "storage.googleapis.com",
+    "compute.googleapis.com",
+    "iam.googleapis.com",
+    "cloudfunctions.googleapis.com",
   ]
 }
 
@@ -16,7 +20,7 @@ locals {
 # ---------------------------------------------------------------------------------------------------------------------
 
 resource "google_project_service" "enabled_service" {
-  for_each = toset(local.services)
+  for_each = toset(local.service)
   project  = var.project
   service  = each.key
 }
@@ -27,9 +31,7 @@ resource "google_project_service" "enabled_service" {
 
 resource "google_sourcerepo_repository" "repo" {
   name = var.repository_name
-  depends_on = [
-    google_project_service.enabled_service["sourcerepo.googleapis.com"]
-  ]
+  depends_on = [google_project_service.enabled_service["sourcerepo.googleapis.com"]]
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -65,6 +67,10 @@ resource "google_storage_bucket" "gcp_bucket" {
   location      = "australia-southeast2"
   name          = "mybucket"
   storage_class = "STANDARD"
+
+  versioning {
+    enabled = true
+  }
 
   # Optional: Set lifecycle rules
   lifecycle_rule {
