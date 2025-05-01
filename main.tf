@@ -11,7 +11,6 @@ locals {
     "storage.googleapis.com",
     "compute.googleapis.com",
     "iam.googleapis.com",
-    "cloudfunctions.googleapis.com",
   ]
 }
 
@@ -65,7 +64,7 @@ resource "google_cloudbuild_trigger" "cloud_build_trigger" {
 
 resource "google_storage_bucket" "gcp_bucket" {
   location      = "australia-southeast2"
-  name          = "mybucket"
+  name          = "poc-bucket"
   storage_class = "STANDARD"
 
   versioning {
