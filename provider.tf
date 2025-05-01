@@ -15,6 +15,6 @@ terraform {
 
 provider "google" {
   project     = var.project
-  region      = "us-central1"
-  zone        = "us-central1-a"
+  region      = "australia-southeast"
+  zone        = "australia-southeast2"
 }

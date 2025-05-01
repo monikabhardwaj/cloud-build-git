@@ -1,7 +1,7 @@
 variable "repository_name"{
   description = "Name of the Google repo"
   type = string
-  default = "cloudbuild-git"
+  default = "cloud-build-git"
 }
 
 variable "branch_name" {
