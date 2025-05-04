@@ -3,14 +3,14 @@
 # LOCAL VALUE
 # ---------------------------------------------------------------------------------------------------------------------
 
-
 locals {
   service = [
     "sourcerepo.googleapis.com",
     "cloudbuild.googleapis.com",
     "storage.googleapis.com",
     "compute.googleapis.com",
-    "iam.googleapis.com",
+    "iam.googleapis.com",# Identity and Access Management API
+    "oauth2.googleapis.com" # OAuth 2.0 API
   ]
 }
 
