@@ -5,7 +5,7 @@
 
 locals {
   service = [
-    "sourcerepo.googleapis.com",
+   # "sourcerepo.googleapis.com",
     "cloudbuild.googleapis.com",
     "storage.googleapis.com",
     "compute.googleapis.com",
