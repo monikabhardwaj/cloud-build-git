@@ -14,6 +14,11 @@ locals {
   ]
 }
 
+resource "google_service_account" "poc-web" {
+  account_id = "01FF52-00891B-64B331"
+  display_name = "Custom SA for project"
+}
+
 # ---------------------------------------------------------------------------------------------------------------------
 # ENABLED THE API SERVICE
 # ---------------------------------------------------------------------------------------------------------------------
@@ -30,7 +35,6 @@ resource "google_project_service" "enabled_service" {
 
 resource "google_sourcerepo_repository" "repo" {
   name = var.repository_name
-  depends_on = [google_project_service.enabled_service["sourcerepo.googleapis.com"]]
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -85,6 +89,11 @@ resource "google_storage_bucket" "gcp_bucket" {
   }
   }
 
+}
+
+service_account {
+  email = google_service_account.poc-web.email
+  scopes = ["cloud-platform"]
 }
 
 
