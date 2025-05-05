@@ -66,7 +66,7 @@ resource "google_cloudbuild_trigger" "cloud_build_trigger" {
 # GOOGLE CLOUD STORAGE BUCKET
 # ---------------------------------------------------------------------------------------------------------------------
 
-resource "google_storage_bucket" "gcp_bucket" {
+resource "google_storage_bucket" "gcp-bucket" {
   location      = "australia-southeast2"
   name          = "poc-bucket"
   storage_class = "STANDARD"
