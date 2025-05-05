@@ -15,7 +15,7 @@ locals {
 }
 
 resource "google_service_account" "poc-web" {
-  account_id = "01FF52-00891B-64B331"
+  account_id = " "
   display_name = "Custom SA for project"
 }
 
